@@ -3,28 +3,46 @@
 Foulbrood is a simple Python tool to visualise the spread of European Foulbrood disease in honeybees in the UK.
 
 European Foulbrood data and recorded incidents are available on "BeeBase" a website that tracks reports of the disease. However, the interactive map is
-not particularly useful and difficult to immediately see the affected regions.
+not particularly useful and difficult to immediately see the affected regions. (https://nationalbeeunit.com/public/BeeDiseases/efbReport.cfm?year=2023)
 
-The datasets in 'datasets' folder were obtained from a simple copying of the data, for the purposes of the exercise. However, my aim is to use Python's request
-library to gather this information directly via a GET request.
+The data on BeeBase shows Ordnance Survey Grid Reference (10km squares) and how many incidents there are for that area. 
+Foulbrood is therefore designed to:
+- scrape this data from the website by year
+- parse it to obtain the OS References as a dataframe using Pandas
+- convert these to latitude and longitudes
+- write them to CSV files by year.
+- start a Python web server
+- Upon the user loading one of the CSVs, will show a heat map of the affected areas for that year.
 
-Note that this is not a web application, JavaScript is only being used to display the data.
+The tool will scrape data from BeeBase and will parse the data and write it to a CSV file. 
+
+Note that this is not a web application, JavaScript is only being used to display the data using the Google maps API.
  
 
 ## Installation
 
-IMPORTANT: Please make sure you have been given the "index.html" file which has been emailed to the recruiter separately, since this contains a JavaScript
-Google Maps API key which I will not push to the GIT repository, despite only accepting requests from "localhost:8000". Since I am displaying the data the old-fashioned way, there is no easy way to mask the API key.
+IMPORTANT: Please make sure you have been given the "index.html" file which has been emailed to the recruiter (Grace) separately, since this contains a Google Maps
+API key which I will not push to the GIT repository, despite only accepting requests from "localhost:8000", for security reasons.
+Since I am displaying the data the old-fashioned way, there is no easy way to mask the API key on the front-end.
 
 Foulbrood uses an external library to convert OS Grid references to latitude and longitude.
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install OSGridConverter.
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the following:
 
 ```bash
 pip install OSGridConverter
 
 pip install requests
+
+pip install beautifulsoup4
 ```
+
+
+
+Please, if you have any trouble whatsoever running the program contact me at:
+asacook@btinternet.com
+or +44(0)7473483316
+
 
 
 
@@ -33,9 +51,7 @@ pip install requests
 ```python foulbrood.py
 ```
 
-This will start a python webserver. Once you have copied in the "index.html" file supplied separately, one can access the data visualisation tool via 
-
-localhost:8000
+This will start a python webserver. Once you have copied in the "index.html" file supplied separately, one can access the data visualisation tool via  localhost:8000
 
 ## Contributing
 
