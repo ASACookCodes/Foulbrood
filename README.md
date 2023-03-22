@@ -48,7 +48,8 @@ or +44(0)7473483316
 
 ## Usage
 
-```python foulbrood.py
+```python
+python foulbrood.py
 ```
 
 This will start a python webserver. Once you have copied in the "index.html" file supplied separately, one can access the data visualisation tool via  localhost:8000
