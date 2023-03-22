@@ -1,6 +1,6 @@
 # Foulbrood
 
-Foulbrood is a simple Python tool to visualise the spread of European Foulbrood disease in honeybees in the UK.
+Foulbrood is a Python tool to visualise the spread of European Foulbrood disease in honeybees in the UK.
 
 European Foulbrood data and recorded incidents are available on "BeeBase" a website that tracks reports of the disease. However, the interactive map is
 not particularly useful and difficult to immediately see the affected regions. (https://nationalbeeunit.com/public/BeeDiseases/efbReport.cfm?year=2023)
