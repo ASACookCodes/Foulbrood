@@ -1,4 +1,5 @@
 import OSGridConverter
+import datetime
 import pandas as pd
 import os, glob
 import sys
@@ -18,9 +19,9 @@ def createCSV(file, name):
     csv.close()
 
 
-def scrapeData():
+def scrapeData(year):
     #Get 2022 dataset and parse using BeautifulSoup 
-    source = requests.get('https://nationalbeeunit.com/public/BeeDiseases/efbReport.cfm?year=2022').text
+    source = requests.get('https://nationalbeeunit.com/public/BeeDiseases/efbReport.cfm?year='+year).text
     soup = BeautifulSoup(source, 'html.parser')
     beetable = soup.find("table", class_="dataTextCenter") #Name of the table class
     df = pd.DataFrame(columns=['County', 'OSR', 'Area', 'Number', 'MonthFound'])
@@ -57,17 +58,20 @@ def main():
     for f in files:
         os.remove(f)
 
-    #Get OS coordinates from BeeBase website
-    OSCoords = scrapeData()
+    #Get OS coordinates from BeeBase website for the last five years
+    today = datetime.date.today()
+    
+    for year in range(today.year-5, today.year):
+        OScoords = scrapeData(str(year))
 
-    #Convert the OS coords to latitude and longitude and write to a CSV file
-    latlngs = open("data.csv", "w")
-    for coord in OScoords:
-        point = str(OSGridConverter.grid2latlong(coord))
-        point = point.replace('+','')
-        point = point.replace(':',',')
-        latlngs.write(point+"\n")
-    latlngs.close() 
+        # Convert the OS coords to latitude and longitude and write to a CSV file
+        latlngs = open("CSVs/"+str(year)+".csv", "w")
+        for coord in OScoords:
+            point = str(OSGridConverter.grid2latlong(coord))
+            point = point.replace('+','')
+            point = point.replace(':',',')
+            latlngs.write(point+"\n")
+        latlngs.close() 
     
     
 main()
