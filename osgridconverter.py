@@ -1,52 +1,49 @@
 import OSGridConverter
 import pandas as pd
-import os
+import os, glob
 import sys
 
-year = sys.argv[1]
+csvpath="CSVs/"
 
-textpath="datasets/"+year
-csvpath="CSVs/"+year
-
-def createCSV():
-    file = open(textpath+".txt", "r")
-    csv = open(csvpath+".csv", "a")
+def createCSV(file, name):
+    csv = open(csvpath+name+".csv", "a")
     csv.write("area,os,town,number,month\n")
     for line in file:
         line = line.replace(' ','')#FIX THESE TO BE BETTER
         line = line.replace(',','')
         line = line.replace('	',',')
         csv.write(line) 
-    file.close()
     csv.close()
     
 
 
 def main():
     #remove the existing CSV if it exists
-    if os.path.exists(csvpath+".csv"):
-        os.remove(csvpath+".csv")
-        
-    #remove the existing latlng csv if it exists
-    if os.path.exists(year+"latlng.csv"):
-        os.remove(year+"latlng.csv")
+    files = glob.glob('CSVs/*')
+    for f in files:
+        os.remove(f)
     
-    #Transform the text file into a CSV
-    createCSV()
-    beedata = pd.read_csv(csvpath+".csv")
-    OScoords = beedata["os"]
+    #Get all datasets and convert to CSVs    
+    folder_path = 'datasets'
+    for filename in glob.glob(os.path.join(folder_path, '*.txt')):
+        with open(filename, 'r') as f:
+            filename = os.path.basename(filename)
+            name = os.path.splitext(filename)[0] #no file extension
+            createCSV(f, name)
+            beedata = pd.read_csv(csvpath+name+".csv")
+            OScoords = beedata["os"]
 
-    #Convert the OS coords to latitude and longitude and write to the csv file
-    latlngs = open(csvpath+".csv", "w")
-    for coord in OScoords:
-        point = str(OSGridConverter.grid2latlong(coord))
-        point = point.replace('+','')
-        point = point.replace(':',',')
-        latlngs.write(point+"\n")
-        #print(point)
-    latlngs.close() 
+            #Convert the OS coords to latitude and longitude and write to the csv file
+            latlngs = open(csvpath+name+".csv", "w")
+            for coord in OScoords:
+                point = str(OSGridConverter.grid2latlong(coord))
+                point = point.replace('+','')
+                point = point.replace(':',',')
+                latlngs.write(point+"\n")
+                #print(point)
+            latlngs.close() 
     
-    #create web server
+    # #create web server
     try:
         # Python 2
         from SimpleHTTPServer import test, SimpleHTTPRequestHandler
