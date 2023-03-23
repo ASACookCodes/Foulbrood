@@ -3,11 +3,9 @@
 Foulbrood is a Python tool to visualise the spread of European Foulbrood disease in honeybees in the UK.
 
 European Foulbrood data and recorded incidents are available on "BeeBase" (https://www.nationalbeeunit.com) a website that tracks reports of the disease. However, the interactive map is
-not particularly useful and difficult to immediately see the affected regions.
+not particularly useful and difficult to immediately see the affected regions. (NOTE: IN A BIZARRE TWIST OF FATE, THE NIGHT OF 22/03/2022 THE WEBSITE https://www.nationalbeeunit.com UNDERWENT A COMPLETE OVERHAUL. The maps are no longer accessible, and are apparently "in preparation" according to https://www.nationalbeeunit.com/diseases-and-pests/reports-charts-and-maps/.) All the more reason to make this tool now!
 
-(NOTE: IN A BIZARRE TWIST OF FATE, THE NIGHT OF 22/03/2022 THE WEBSITE https://www.nationalbeeunit.com UNDERWENT A COMPLETE OVERHAUL. The maps are no longer accessible, and are apparently "in preparation" according to https://www.nationalbeeunit.com/diseases-and-pests/reports-charts-and-maps/.)
-
-The data on BeeBase shows Ordnance Survey Grid Reference (10km squares) and how many incidents there are for that area. 
+The data on BeeBase shows Ordnance Survey Grid Reference (10km squares) and how many incidents there are for that area.
 Foulbrood is therefore designed to:
 - scrape this data from the website by year for the last 5 years (note that there is no disease data for 2023 thus far). Good news for bees.
 - parse it to obtain the OS References as a dataframe using Pandas
@@ -56,7 +54,7 @@ or +44(0)7473483316
 python foulbrood.py
 ```
 
-- This will start a python webserver. Once you have copied in the "index.html" file supplied separately, one can access the data visualisation tool via  localhost:8000
+- This will start a python webserver. Once you have copied in the "index.html" supplied separately into the project folder, one can access the data visualisation tool via  localhost:8000
 - You can then load and inspect the data by choosing a file from the CSV's folder in the project directory.
 
 ## Contributing
