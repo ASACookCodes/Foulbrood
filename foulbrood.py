@@ -21,12 +21,11 @@ def createCSV(file, name):
 
 def scrapeData(year):
     #Get 2022 dataset and parse using BeautifulSoup 
-    source = requests.get('https://nationalbeeunit.com/public/BeeDiseases/efbReport.cfm?year='+year).text
+    source = requests.get('https://www.nationalbeeunit.com/diseases-and-pests/reports-charts-and-maps/disease-incidence/live-efb-report/?year='+year).text
     soup = BeautifulSoup(source, 'html.parser')
-    beetable = soup.find("table", class_="dataTextCenter") #Name of the table class
+    beetable = soup.find("table", class_="table table-bordered table-sm") #Name of the table class
     df = pd.DataFrame(columns=['County', 'OSR', 'Area', 'Number', 'MonthFound'])
-
-    # Collect ALL the data!
+    # # Collect ALL the data!
     for row in beetable.find_all('tr'):    
         # Find all data for each column
         columns = row.find_all('td')
@@ -64,7 +63,7 @@ def main():
     for year in range(today.year-5, today.year):
         OScoords = scrapeData(str(year))
 
-        # Convert the OS coords to latitude and longitude and write to a CSV file
+        #Convert the OS coords to latitude and longitude and write to a CSV file
         latlngs = open("CSVs/"+str(year)+".csv", "w")
         for coord in OScoords:
             point = str(OSGridConverter.grid2latlong(coord))
