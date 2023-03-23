@@ -21,7 +21,7 @@ Note that this is not a web application, JavaScript is only being used to displa
 
 ## Installation
 
-IMPORTANT: Please make sure you have been given the "index.html" file which has been emailed to the recruiter (Grace) separately, since this contains a Google Maps
+IMPORTANT: Please make sure you have been given the "index.html" file which has been emailed to the recruiter separately, since this contains a Google Maps
 API key which I will not push to the GIT repository, despite only accepting requests from "localhost:8000", for security reasons.
 Since I am displaying the data the old-fashioned way, there is no easy way to mask the API key on the front-end.
 
