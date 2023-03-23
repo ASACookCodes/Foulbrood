@@ -1,8 +1,5 @@
 # Foulbrood
 
-NOTE: 23/03/2022
-IN A BIZARRE TWIST OF FATE, THE NIGHT OF 22/03/2022 THE WEBSITE https://www.nationalbeeunit.com UNDERWENT A COMPLETE OVERHAUL. It is not unliklely that the website overhaul is an ongoing process, meaning that I will be maintaining the code until I receive feedback every day to make sure it still works.
-
 Foulbrood is a Python tool to visualise the spread of European Foulbrood disease in honeybees in the UK.
 
 European Foulbrood data and recorded incidents are available on "BeeBase" (https://www.nationalbeeunit.com) a website that tracks reports of the disease. However, the interactive map is
