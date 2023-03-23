@@ -36,7 +36,9 @@ def scrapeData(year):
             area = columns[2].text.strip()
             number = columns[3].text.strip()
             month = columns[4].text.strip()
-            df = df.append({'County': county,  'OSR': osr, 'Area': area, 'Number': number, 'MonthFound': month}, ignore_index=True)
+            #df = df.append({'County': county,  'OSR': osr, 'Area': area, 'Number': number, 'MonthFound': month}, ignore_index=True)
+            new= pd.DataFrame.from_records([{'County': county,  'OSR': osr, 'Area': area, 'Number': number, 'MonthFound': month}])
+            df = pd.concat([df,new], ignore_index=True)
     return df["OSR"]
     
     
