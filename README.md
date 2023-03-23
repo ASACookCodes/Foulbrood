@@ -19,7 +19,7 @@ Foulbrood is therefore designed to:
 
 The tool will scrape data from BeeBase and will parse the data and write it to a CSV file. The user can then upload a CSV and examine the spread of the disease. The image below gives a sample of what the user should see upon inspecting 2021's data.
 
-![2021 Foulbrood Data](https://imgur.com/94KP36A)
+![2021 Foulbrood Data](https://i.imgur.com/94KP36A.jpg)
 
 Note that this is not a web application, JavaScript is only being used to display the data using the Google maps API.
  
