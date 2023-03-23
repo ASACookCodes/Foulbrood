@@ -17,7 +17,9 @@ Foulbrood is therefore designed to:
 - start a Python web server
 - Upon the user loading one of the generated CSVs, will show a heat map of the affected areas for that year.
 
-The tool will scrape data from BeeBase and will parse the data and write it to a CSV file. 
+The tool will scrape data from BeeBase and will parse the data and write it to a CSV file. The user can then upload a CSV and examine the spread of the disease. The image below gives a sample of the data from 2021.
+
+![2021 Foulbrood Data](demo.jpg?raw=true)
 
 Note that this is not a web application, JavaScript is only being used to display the data using the Google maps API.
  
