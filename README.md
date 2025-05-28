@@ -42,14 +42,6 @@ pip install beautifulsoup4
 ```
 
 
-
-Please, if you have any trouble whatsoever running the program contact me at:
-asacook@btinternet.com
-or +44(0)7473483316
-
-
-
-
 ## Usage
 
 ```python
